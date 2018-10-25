@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
-<body>
+<body onload="load(false)">
 <h1>CGM Ticket Redirect</h1>
 <p>Redirecting... (Your default email app should be opening.)</p>
+<button onclick="load(true)">If it doesn't, click here</button>
 <script>
-var email = "helpdesk@floridapoly.edu"
-var subject = "CGM%20LAB%20&"
-var emailbody = "Hi%21%20I%20would%20like%20to%20request%20time%20in%20the%20CGM%20lab%20from%20%5BSTART%20TIME%5D%20to%20%5BEND%20TIME%5D%20for%20%5BPURPOSE%5D.%0D%0AThank%20you%21"
-var UrlConCat = "mailto:"+ email + "?subject=" + subject +"%20&body="+ emailbody
-window.location= UrlConCat
+var email = {
+  address:"helpdesk@floridapoly.edu",
+  subject:"CGM%20LAB%20&",
+  body:"Hi%21%20I%20would%20like%20to%20request%20time%20in%20the%20CGM%20lab%20from%20%5BSTART%20TIME%5D%20to%20%5BEND%20TIME%5D%20for%20%5BPURPOSE%5D.%0D%0AThank%20you%21"
+};
+
+var URLConCat = "mailto:"+ email.address + "?subject=" + email.subject +"%20&body="+ email.body;
+
+function load(manualLoad) {
+  if (true) {
+    console.log("Manual Redirect to:" + URLConCat);
+    window.location.href= URLConCat;
+  } else {
+    console.log("Auto Redirect to:" + URLConCat);
+    window.location.href= URLConCat;
+  };
+};
 </script>
 </body>
 </html>
